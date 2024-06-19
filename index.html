@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+</head>
+<body>
+<button id="btn_blue">Change Blue</button>  
+<button id="btn_white">Change White</button>  
+<button id="btn_green">Change Green</button>  
+<button id="btn_red">Change Red</button> 
+
+
+<div class="p_color" id="content_list">
+  <p id="change_it">Hi Dev</p>
+</div>
+
+<button id="click_change">Change Text</button>
+
+<button id="add_more_data">Add Data</button>
+<button id="remove_data">Remove P tag</button>
+
+</body>
+<script>
+
+
+    window.onload = function() {
+
+    // Change text.
+    
+    const button_click = document.getElementById("click_change");
+    button_click.addEventListener("click",()=>{
+        const change_text = document.getElementById("change_it");
+        change_text.innerText = "Haha, text change kr diya";
+    })
+
+    // add color to p tags.
+
+      const change_p_color = document.querySelectorAll(".p_color p");
+      for (let i = 0; i < change_p_color.length; i++)
+      {
+        const color_Elem = change_p_color[i];
+        color_Elem.style.color = "yellow";
+      }
+
+    // change body color
+
+    const change_body_color = document.getElementsByTagName("body")[0];
+    // console.log("change_body_color",change_body_color);
+    change_body_color.style.backgroundColor = "red";
+
+    const change_btn_blue = document.getElementById("btn_blue");
+    const change_btn_white = document.getElementById("btn_white");
+    const change_btn_green = document.getElementById("btn_green");
+    const change_btn_red = document.getElementById("btn_red");
+
+    // Change body color by click on button
+    change_btn_blue.addEventListener("click", () =>{
+      change_body_color.style.backgroundColor = "blue";
+    })
+    change_btn_white.addEventListener("click", () =>{
+      change_body_color.style.backgroundColor = "white";
+    })
+    change_btn_green.addEventListener("click", () =>{
+      change_body_color.style.backgroundColor = "green";
+    })
+    change_btn_red.addEventListener("click", () =>{
+      change_body_color.style.backgroundColor = "red";
+    })
+
+    // Add Data
+    const button_add_data = document.getElementById("add_more_data");
+    button_add_data.addEventListener("click",()=>{
+        const add_content = document.querySelectorAll("div .p_color p");
+        console.log(add_content);
+        const add_data = prompt("Enter data which you want to add");
+        console.log("Data :", add_data);
+  
+        if(!add_data)
+        {
+          console.log("you did not add any data");
+        }
+        else{
+          const add_p_ELem = document.createElement("p");
+          add_p_ELem.innerText = add_data;
+          content_list.appendChild(add_p_ELem);
+          content_list.style.color = "yellow";
+        }
+    })
+
+    // Remove all P tags.
+    const removedata = document.getElementById("remove_data");
+    removedata.addEventListener("click",()=>{
+      const last_Elem = content_list.querySelectorAll("p");
+      
+      last_Elem.forEach(word => {
+        word.remove();
+      });
+    })
+    }
+    
+    
+  </script>
+</html>
